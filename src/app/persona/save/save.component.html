@@ -1,0 +1,70 @@
+<div class="container py-15">
+
+    <fieldset class="border p-2 mb-1 mt-2 filters">
+        <legend class="w-auto h6">Agregar Personas</legend>
+
+        <hr>
+        <button type="button" (click)="cancelarPersona()" class="btn btn-danger">Atras </button>
+        <hr>
+
+        <form [formGroup]="personForm">
+
+
+
+            <div class="row">
+                <div class="col-sm-6">
+                    <label for="exampleInputNombreNombre" class="form-label">Nombre</label>
+                    <input formControlName="fcn_nombre" type="text" class="form-control" id="exampleInputNombrePrimer"
+                        [ngModel]="personFormInteface.name">
+                    <div *ngIf="fcn_nombre.invalid && ( fcn_nombre.dirty || fcn_nombre.touched )" class="text-danger">
+                        <div *ngIf="fcn_nombre.errors?.['required']">
+                            El Primer Nombre es requerido.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-6">
+                    <label for="exampleInputEdad" class="form-label">Edad</label>
+                    <input formControlName="fcn_edad" type="text" class="form-control" id="exampleInputEdad"
+                        [ngModel]="personFormInteface.age">
+                    <div *ngIf="fcn_edad.invalid && ( fcn_edad.dirty || fcn_edad.touched )" class="text-danger">
+                        <div *ngIf="fcn_edad.errors?.['required']">
+                            El Primer Apellido es requerido.
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row">
+
+                <div class="col-sm-6">
+                    <label for="exampleInputFechaNacimiento" class="form-label">Fecha Nacimineto</label>
+                    <input formControlName="fcn_date_Of_Birth" type="date" data-date-format="DD MMMM YYYY"
+                        class="form-control" id="exampleInputFechaNacimiento"
+                        [ngModel]="personFormInteface.fechaNaciento">
+                    <div *ngIf="fcn_date_Of_Birth.invalid && ( fcn_date_Of_Birth.dirty || fcn_date_Of_Birth.touched )"
+                        class="text-danger">
+                        <div *ngIf="fcn_date_Of_Birth.errors?.['required']">
+                            El Fecha de Nacimiento es requerido.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+            <hr>
+            <div class="row">
+                <div class="col-sm-6">
+                    <button type="submit" (click)="guardarEditarPersona()" class="btn btn-primary me-3">{{ ActionBtn }}</button>
+                    <button type="button" (click)="cancelarPersona()" class="btn btn-danger">Cancelar </button>
+                </div>
+            </div>
+        </form>
+    </fieldset>
+</div>

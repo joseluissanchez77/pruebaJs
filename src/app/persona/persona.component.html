@@ -1,0 +1,59 @@
+<nav class="navbar navbar-dark bg-primary">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Jose Sanchez - Lista de Personas </a>
+    </div>
+</nav>
+
+
+<div class="container py-15">
+
+    <fieldset class="border p-2 mb-1 mt-2 filters">
+        <legend class="w-auto h6">Personas</legend>
+
+
+        <div class="mt-5 d-grid gap-2 d-md-flex justify-content-md-end">
+            <button type="button" class="btn btn-block btn-info" (click)="btnAddPerson()">
+                <i class="fa fa-plus" aria-hidden="true"></i>
+                Agregar
+            </button>
+
+        </div>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Edad</th>
+                    <th scope="col">Fecha Nacimiento</th>
+                    <th scope="col">Acciones</th>
+                </tr>
+            </thead>
+            <tbody *ngIf="objGetPerson.length > 0 else TablaVacia">
+
+                <tr *ngFor="let item of objGetPerson;" (click)="dataPersonRow(item)">
+
+                    <td>{{ item.id }}</td>
+                    <td>{{ item.name }}</td>
+                    <td>{{ item.age }}</td>
+                    <td>{{ item.fechaNaciento | date: 'dd/MM/yyyy'}}</td>
+                    <td>
+                        <!-- <button type="button" class="btn btn-primary me-1" (click)="viewPersonRowModal(item)"
+                            title="Ver Todos los datos de la Persona"><i class="far fa-eye"></i>Ver</button> -->
+                        <button type="button" class="btn btn-success me-1" (click)="btnUpdatePerson(item)"><i
+                                class="fas fa-edit"></i>Editar</button>
+                        <button type="button" class="btn btn-danger" (click)="deletePersonRowConfirm(item)"
+                            title="Eliminar Persona"><i class="far fa-trash-alt"></i>Borrar</button>
+                    </td>
+                </tr>
+
+            </tbody>
+            <ng-template #TablaVacia>
+                <tbody>
+                    <tr class="body-empty">
+                        <td colspan="5">No hay datos para mostrar</td>
+                    </tr>
+                </tbody>
+            </ng-template>
+        </table>
+    </fieldset>
+</div>
